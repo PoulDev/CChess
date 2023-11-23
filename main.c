@@ -7,7 +7,7 @@
 	 - I pedoni dovrebbero potersi spostare di 2 pedine alla mossa iniziale, per ora non possono.
 	 - Se sei sotto scacco puoi fare quel che vuoi, invece dovrebbe renderti possibile fare solamente mosse che ti tolgono dallo scacco.
 	 - Lo stallo non e' implementato.
-	 - L'enpassòn non e' implementato.
+	 - L'En passant non e' implementato.
 	 - Possibili bug(???)
 */
 
