@@ -3,6 +3,15 @@
 #include <math.h>
 
 /*
+	----- COSA MANCA AL COMPLETAMENTO? -----
+	 - I pedoni dovrebbero potersi spostare di 2 pedine alla mossa iniziale, per ora non possono.
+	 - Se sei sotto scacco puoi fare quel che vuoi, invece dovrebbe renderti possibile fare solamente mosse che ti tolgono dallo scacco.
+	 - Lo stallo non e' implementato.
+	 - L'enpassòn non e' implementato.
+	 - Possibili bug(???)
+*/
+
+/*
  * 0 = Null
  * 1 = Pedina
  * 2 = Torre
