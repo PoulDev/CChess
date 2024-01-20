@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 /*
 	----- COSA MANCA AL COMPLETAMENTO? -----
@@ -367,7 +368,7 @@ void space(int length) {
 	}
 }
 
-int print_info(char* infos[3*8], int info_index) {
+int print_info(char infos[3*8][128], int info_index) {
 	if (info_index < 3*8) {
 		space(5);
 		printf(infos[info_index]);
@@ -375,7 +376,7 @@ int print_info(char* infos[3*8], int info_index) {
 	return info_index + 1;
 }
 
-void print_board(short int scacchiera[8][8], int selected[2], short int highlights[8][8], char* additional_info[3*8]) {
+void print_board(short int scacchiera[8][8], int selected[2], short int highlights[8][8], char additional_info[3*8][128]) {
 	int linea, quadrante, is_white, is_selected, info_index;
 
 	if (!DEBUG) {printf("\e[1;1H\e[2J");}
@@ -599,13 +600,8 @@ int controllo_scacco_matto(short int scacchiera[8][8], int squadra) {
     return 1;
 }
 
-void compila_informazioni(char* additional_info[3*8], int punti_rosso, int punti_blu) {
-	additional_info[5] = "* -------------------------------------- *";
-	additional_info[6] = "   Blu ha mangiato 0 pedine";
-	additional_info[7] = "   Rosso ha mangiato 0 pedine";
-	additional_info[8] = "    ( Non ho la minima idea di come "; 
-	additional_info[9] = "       concatenare int e stringhe in C )";
-	additional_info[10] = "* -------------------------------------- *";
+void compila_informazioni(char additional_info[3*8][128], int punti_rosso, int punti_blu) {
+    // TODO
 }
 
 int main() {
@@ -614,12 +610,12 @@ int main() {
 
 	int linea, quadrante, highlights_count, exit_loop, turn, punti_rosso, punti_blu, scacco;
 	char input;
-	char* additional_info[3*8];
+	char additional_info[3*8][128];
 
 	selected[0] = -1;
 
 	for (linea = 0; linea < 3*8; linea++) {
-		additional_info[linea] = "";
+		additional_info[linea][0] = '\0';
 	}
 
 	clear_board(highlights);
@@ -642,7 +638,7 @@ int main() {
 		
         scacco = controllo_scacco(scacchiera, 0);
 		if (scacco == 1 || scacco == -1) {
-			printf("Scacco!\n", scacco);
+			printf("Scacco!\n");
 			if (controllo_scacco_matto(scacchiera, scacco)) {
                 printf("SCACCO MATTO!\n");
                 return 0;
